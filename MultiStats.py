@@ -125,7 +125,7 @@ class Statistics:
                                         B = self.coords)
         return (self.compute_rgyr2_mean() + rgyr2 - 2 * similarity) ** 0.5
 
-    def RMSF(self):
+    def rmsf(self):
         """
         Returns the RMSF of the initial coordinates.        
 
