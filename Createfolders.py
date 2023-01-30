@@ -2,30 +2,44 @@ import os
 
 class CreateFolders:
     """
-    A class for creating an output folder and within that folder, four other folders namely, 
-    'results', 'performance', 'imgs', 'models'
+    Class for creating a folder and subfolders within it.
+
+    Attributes:
+        folder_name (str): Name of the main folder to be created.
     """
-    def __init__(self, output_folder):
-        """
-        Constructor for the class
-        :param output_folder: name of the output folder
-        """
-        self.output_folder = output_folder
-        # list of folders to be created within the output folder
-        self.folders = ['results', 'performance', 'imgs', 'models']
 
-        # check if output folder already exists, if not create it
-        if not os.path.exists(self.output_folder):
-            os.makedirs(self.output_folder)
+    def __init__(self, folder_name):
+        """
+        Initialize the main folder name.
 
-        
-        # create the folders
-        for folder in self.folders:
-            os.makedirs(os.path.join(self.output_folder, folder))
+        Args:
+            folder_name (str): Name of the main folder to be created.
+        """
+        self.folder_name = folder_name
+
+    def create(self):
+        """
+        Create the main folder if it doesn't already exist.
+        """
+        if not os.path.exists(self.folder_name):
+            os.makedirs(self.folder_name)
+
+    def create_subfolders(self):
+        """
+        Create subfolders within the main folder if they don't already exist.
+        """
+        # List of subfolder names to be created
+        subfolder_names = ['results', 'performance', 'imgs', 'models']
+
+        # Create each subfolder
+        for subfolder_name in subfolder_names:
+            subfolder_path = os.path.join(self.folder_name, subfolder_name)
+            if not os.path.exists(subfolder_path):
+                os.makedirs(subfolder_path)
+
 
 
 
 if __name__ == "__main__":
-    pass
-    #CreateFolders('output')
+    CreateFolders('output').create()
 
