@@ -81,7 +81,7 @@ class LoadTrajectories:
         return traj_dict
 
 
-class ParseTrajectories:
+class ParseTrajectory:
     """
     A class for parsing and analyzing molecular dynamics trajectories using MDAnalysis.
 
@@ -104,11 +104,11 @@ class ParseTrajectories:
         self.universe = universe
 
         # Increment the class variable 'no' to keep track of the number of instances
-        ParseTrajectories.no += 1
+        ParseTrajectory.no += 1
 
         # If this is the first instance, set the reference coordinates
-        if ParseTrajectories.no == 1:
-            ParseTrajectories.ref = universe.atoms.positions
+        if ParseTrajectory.no == 1:
+            ParseTrajectory.ref = universe.atoms.positions
         
     def get_coords(self):
         """
@@ -129,7 +129,7 @@ class ParseTrajectories:
             aligned_coords (ndarray): The aligned coordinates of the atoms in the trajectory.
         """
         # Use the Allign class to align the coordinates to the reference coordinates
-        return Allign(ParseTrajectories.ref).transform(self.get_coords())
+        return Allign(ParseTrajectory.ref).transform(self.get_coords())
 
     def __repr__(self):
             """
@@ -140,7 +140,38 @@ class ParseTrajectories:
             """
             return f'{self.__class__.__name__}(name={self.name}, universe={self.universe.atoms.positions.shape})'
 
-
+def down_sample(trajectory, num_images):
+        """
+        Extract a specified number of sub-trajectories from a given trajectory.
+        
+        Parameters
+        ----------
+        trajectory : numpy.ndarray
+            A 3D NumPy array containing the coordinates of the atoms in the trajectory.
+        num_images : int
+            The number of sub-trajectories to extract from the trajectory.
+        
+        Returns
+        -------
+        list of numpy.ndarray
+            A list of NumPy arrays, each containing a sub-trajectory of the original trajectory.
+        """
+        # Calculate the number of frames in the trajectory
+        num_frames = trajectory.shape[0]
+        
+        # Calculate the number of frames that will be excluded from the mini-trajectories
+        mod = num_frames % num_images
+        
+        if mod != 0:
+            # Exclude the first 'mod' frames from the trajectory
+            trajectory = trajectory[mod:, :]
+            print(f'WARNING: Unable to index full trajectory for {num_images} images, excluded first {mod} frames')
+        
+        # Extract the desired frames from the trajectory using NumPy array indexing and slicing
+        mini_trajs = [trajectory[index:num_frames:num_images, :] for index in range(num_images)]
+        
+        # Return the resulting mini-trajectories as a list of NumPy arrays
+        return np.array(mini_trajs)
 
 def main():
     """
@@ -150,7 +181,7 @@ def main():
     data = LoadTrajectories().traj_from_dir('/path/to/data/')
 
     # create an instance of the class
-    parse_trajectory = ParseTrajectories('my trajectory', data['my trajectory'])
+    parse_trajectory = ParseTrajectory('my trajectory', data['my trajectory'])
 
 
     # align the coordinates to the reference coordinates
