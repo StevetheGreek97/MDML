@@ -217,11 +217,6 @@ class SaliencyMap():
       grad_eval = (dgrad_max_ - arr_min) / (arr_max - arr_min + 1e-18)
       
       
-      
-      # fig, axes = plt.subplots(1,2,figsize=(14,5))
-      # axes[0].imshow(img)
-      # i = axes[1].imshow(grad_eval,cmap='viridis',alpha=0.8)
-    #     fig.colorbar(i)
       return grad_eval
 
 @tf.custom_gradient
