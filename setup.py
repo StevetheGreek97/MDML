@@ -4,6 +4,7 @@ from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, InputLayer
 import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
+import numpy as np
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -164,5 +165,12 @@ def get_performance(history, path_to_save, save = True):
     if save: 
         plt.savefig(path_to_save)
 
+def decode(img_path):
+    img = np.array(keras.preprocessing.image.load_img(
+        path = img_path,
+        grayscale=False, 
+        color_mode="rgb"))
+    return np.expand_dims(img/ 255, axis=0)
 
-
+if __name__ == "__main__":
+    pass
