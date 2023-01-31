@@ -17,7 +17,7 @@ def preprocess():
     data  = LoadTrajectories().traj_from_dir(path + 'data/')
 
     for (name,  trajectory) in data.items():
-        traj_obj = ParseTrajectory(name, trajectory)
+        traj_obj = ParseTrajectory(name, trajectory.select_atoms('name CA'))
         print(traj_obj)
         downsampled =  down_sample(traj_obj.allign(), confkeys.read_key('downsample_to'))
 
