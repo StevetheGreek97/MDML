@@ -71,7 +71,7 @@ class LoadTrajectories:
         """
         # Create the traj_dict dictionary using a dictionary comprehension
         traj_dict = {
-            folder: mda.Universe(file_paths[1], file_paths[0]).select_atoms('name CA')
+            folder: mda.Universe(file_paths[1], file_paths[0])
             for folder, file_paths in self.get_files(path).items()
         }
 
