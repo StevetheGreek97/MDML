@@ -1,4 +1,5 @@
 debugger.ipynb
-.ipynb_checkpoints/Untitled-checkpoint.ipynb
-.ipynb_checkpoints/debugger-checkpoint.ipynb
+.ipynb_checkpoints
 config.yml
+.pylintrc
+.gitignore

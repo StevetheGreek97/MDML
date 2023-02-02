@@ -6,8 +6,8 @@ import tensorflow as tf
 import numpy as np
 
 
-def preprocess():
-    confkeys = yamlh('config.yml') 
+def preprocess(conf_file):
+    confkeys = yamlh(conf_file) 
     output_folder = f"{confkeys.read_key('savepath')}/output"
     cf(output_folder).create_subfolders()
      
