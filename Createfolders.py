@@ -38,8 +38,5 @@ class CreateFolders:
                 os.makedirs(subfolder_path)
 
 
-
-
 if __name__ == "__main__":
     CreateFolders('output').create()
-
