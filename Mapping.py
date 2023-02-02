@@ -36,8 +36,10 @@ def mapping():
 
     # Iterate over the items in the data
     for name, universe in data.items():
+        
         img_path = f"{save_path}/output/imgs/{name}"
         saving_path_per_sate = f"{save_path}/output/results/{name}_{date}"
+
         print(f'Computing saliency map for {name}...')
         for img in get_image_paths(img_path):
             sal_map += vis.SaliencyMap(model,decode(img)).gradient_saliency_map()
