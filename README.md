@@ -30,14 +30,57 @@ Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl
 
 1. Clone the repository to your local machine:
 
-shell: git clone https://github.com/StevetheGreek97/MD_ML.git
+```git clone https://github.com/StevetheGreek97/MD_ML.git```
 
 2. Create a new environment:
 
-shell: virtualenv MD_ML
+``` virtualenv MD_ML```
 
 3. Install the required packages:
 
-pip install -r requirments.txt
+```pip install -r requirments.txt```
 
 4. Run jupyter notebook to check the tutorials in the examples folder.
+
+## Usage
+
+The pipeline consists of three modules: Preprocessing.py, Machinelearning.py and Mapping.py.
+
+ To get started, simply configure a yaml configuration file (conf.yml) that includes:
+1. the 'masterpath' to a folder containing subfolders for each classification state (e.g., active, inactive state) -> str
+
+Each subfolder should contain a .pdb and .xtc file for the corresponding state.
+
+```
+ < data >
+     |  
+     |
+     |--active
+     |     |
+     |     |--topology file (.pdb)
+     |     |
+     |     |--coordinates file (.xtc)
+     |
+     |--inactive
+           |
+           |--topology file (.pdb)
+           |
+           |--coordinates file (.xtc)
+```
+
+2. a 'savingpath' that all the results with be saved. -> str
+
+3. 'downsampled_to' how many image should be created for each state -> int
+
+```
+downsample_to: 1659
+masterpath: /path/to/data/
+savepath: /path/to/save
+
+```
+The final output includes a series of down-sampled images, a prefomance img, a confusion matrix, a saliency map, a .txt file listing important residues, and a .pdb file with b-factor information showing the important residues. 
+
+In order to run the pipeline simply run this code:
+```
+python3 main.py -c path/to/confg.yml
+```
