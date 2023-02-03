@@ -52,20 +52,22 @@ The pipeline consists of three modules: Preprocessing.py, Machinelearning.py and
 Each subfolder should contain a .pdb and .xtc file for the corresponding state.
 
 ```
- < data >
-     |  
-     |
-     |--active
-     |     |
-     |     |--topology file (.pdb)
-     |     |
-     |     |--coordinates file (.xtc)
-     |
-     |--inactive
-           |
-           |--topology file (.pdb)
-           |
-           |--coordinates file (.xtc)
+< EGFR >
+    |
+    |--data 
+    |    |  
+    |    |
+    |    |--active
+    |    |     |
+         |     |--topology file (.pdb)
+         |     |
+         |     |--coordinates file (.xtc)
+         |
+         |--inactive
+               |
+               |--topology file (.pdb)
+               |
+               |--coordinates file (.xtc)
 ```
 
 2. a 'savingpath' that all the results with be saved. -> str
@@ -79,7 +81,38 @@ savepath: /path/to/save
 
 ```
 The final output includes a series of down-sampled images, a prefomance img, a confusion matrix, a saliency map, a .txt file listing important residues, and a .pdb file with b-factor information showing the important residues. 
-
+```
+< output >
+    |
+    |--------imgs 
+    |         |
+    |         |---active
+    |         |     |
+    |         |     |--active_x.jpg
+    |         |
+    |         |--inactive
+    |         |     |
+    |               |--inactive_x.jpg 
+    |     
+    |-------models
+    |         |
+    |         |--model.h5
+    |
+    |-----performance
+    |         |
+    |         |--peformancne.jpg
+    |
+    |------results
+    |         |
+    |         |-inactive.txt
+    |         |-inactive.pdb
+    |         |-sal_map_inactive.jpg
+              |-active.txt
+              |-active.pdb
+              |-sal_map_active.jpg
+              |   
+    
+```
 In order to run the pipeline simply run this code:
 ```
 python3 main.py -c path/to/confg.yml
