@@ -10,8 +10,9 @@ Supervisor:       Tsjerk Wassenaar,  t.a.wassenaar@pl.hanze.nl <br>
 Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl <br>
 
 ## Research questions
-1. Is it possible to predict long term simulations from sort term ones? 
-2. How short is short enough? 
+1. Assess whether a Convolutional Neural Networks (CNN) classification approach is useful and relevant in the field of MD.
+2. Is it possible to predict long term simulations from sort term ones? 
+3. How short is short enough? 
 
 ## Requirements
 
