@@ -1,20 +1,17 @@
-# Project title: Molecular_Dynamics_&_Machine_Learning
+# Molecular Dynamics & Machine Learning (MDML)
 
 This repository is for the graduation projrct for the Master in Data Science 
 for Life Sciences at Hanze University of Applied Sciences.
 
-The purpose of this project would be to explore new methods for overcoming molecular dynamics problems by using ideas from machine learning (ML). 
-The objective is to explore ML/AI models to predict the effect of mutations on EGFR as obtained from much shorter simulations,
-cutting down both time and produced data. 
+Proteins play a vital role in many biological processes and are essential to the structure and function of cells. Dysfunctional proteins can lead to disease and studying them can aid in understanding the underlying cause of the disease and potentially developing treatments and medication. In this study, a custom Convolutional Neural Network (CNN) was used to analyze the active and inactive states of the EGFR protein, a key player in cancer. The CNN was able to identify key residues that define the active and inactive state of the protein, specifically the DFG-Asp motif, with 100% accuracy. Our methodology for image transformation represented the 3D coordinates of atoms in a protein as 2D images, which differs from existing methods in literature. The results of this study demonstrate the potential of using deep learning methods on MD simulation trajectories, but also highlight the need for careful evaluation of the used methods and their utility in order to ensure meaningful insights.
 
 Student:          Stylianos Mavrianos, s.mavrianos@st.hanze.nl <br>
 Supervisor:       Tsjerk Wassenaar,  t.a.wassenaar@pl.hanze.nl <br>
 Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl <br>
 
 ## Research questions
-Questions that would be answer are: 
-    1. Is it possible to predict long term simulations from sort term ones? 
-    2. How short is short enough? 
+1. Is it possible to predict long term simulations from sort term ones? 
+2. How short is short enough? 
 
 ## Requirements
 
