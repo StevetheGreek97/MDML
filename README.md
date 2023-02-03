@@ -84,33 +84,34 @@ The final output includes a series of down-sampled images, a prefomance img, a c
 ```
 < output >
     |
-    |--------imgs 
-    |         |
-    |         |---active
-    |         |     |
-    |         |     |--active_x.jpg
-    |         |
-    |         |--inactive
-    |         |     |
-    |               |--inactive_x.jpg 
+    |-- imgs 
+    |     |
+    |     |-- active
+    |     |     |
+    |     |     |-- active_X.jpg    # The down-sampled active trajectory transcribed in RGB values
+    |     |
+    |     |-- inactive
+    |     |     |
+    |           |-- inactive_X.jpg  # The down-sampled inactive trajectory transcribed in RGB values
     |     
-    |-------models
-    |         |
-    |         |--model.h5
+    |-- models
+    |     |
+    |     |-- model.h5               # The trained model 
     |
-    |-----performance
-    |         |
-    |         |--peformancne.jpg
+    |-- performance
+    |     |
+    |     |-- peformancne.jpg        # An image of the model's performance (locc, accuracy)
+    |     |-- confusion_matrix.jpg   # An image of the confusion matrix of the model 
     |
-    |------results
-    |         |
-    |         |-inactive.txt
-    |         |-inactive.pdb
-    |         |-sal_map_inactive.jpg
-              |-active.txt
-              |-active.pdb
-              |-sal_map_active.jpg
-              |   
+    |-- results
+    |     |
+    |     |-- inactive.txt           # The important residues for the inactive state
+    |     |-- inactive.pdb           #  b-factor information showing the important residues for the inactive state
+    |     |-- sal_map_inactive.jpg   # The saliency map of the inactive state
+          |-- active.txt             # The important residues for the active state
+          |-- active.pdb             #  b-factor information showing the important residues for the active state
+          |-- sal_map_active.jpg     # The saliency map of the active state
+          |   
     
 ```
 In order to run the pipeline simply run this code:
