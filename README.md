@@ -5,7 +5,10 @@ for Life Sciences at Hanze University of Applied Sciences.
 
 The purpose of this project would be to explore new methods for overcoming molecular dynamics problems by using ideas from machine learning (ML). 
 The objective is to explore ML/AI models to predict the effect of mutations on EGFR as obtained from much shorter simulations,
-cutting down both time and produced data. Questions that would be answer are: 
+cutting down both time and produced data. 
+
+## Research questions
+Questions that would be answer are: 
     1. Is it possible to predict long term simulations from sort term ones? 
     2. How short is short enough? 
    
@@ -40,7 +43,7 @@ Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl
 
 ```pip install -r requirments.txt```
 
-4. Run jupyter notebook to check the tutorials in the examples folder.
+4. Example tutorials for each module are in the Examples folder. There are all jupyter notebooks. 
 
 ## Usage
 
@@ -84,3 +87,4 @@ In order to run the pipeline simply run this code:
 ```
 python3 main.py -c path/to/confg.yml
 ```
+Alternatevly you can run the three modules separately. They also serve as checkpoints.
