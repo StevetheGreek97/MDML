@@ -7,14 +7,14 @@ The purpose of this project would be to explore new methods for overcoming molec
 The objective is to explore ML/AI models to predict the effect of mutations on EGFR as obtained from much shorter simulations,
 cutting down both time and produced data. 
 
+Student:          Stylianos Mavrianos, s.mavrianos@st.hanze.nl <br>
+Supervisor:       Tsjerk Wassenaar,  t.a.wassenaar@pl.hanze.nl <br>
+Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl <br>
+
 ## Research questions
 Questions that would be answer are: 
     1. Is it possible to predict long term simulations from sort term ones? 
     2. How short is short enough? 
-   
-Student:          Stylianos Mavrianos, s.mavrianos@st.hanze.nl 
-Supervisor:       Tsjerk Wassenaar, t.a.wassenaar@pl.hanze.nl 
-Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl 
 
 ## Requirements
 
