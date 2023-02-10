@@ -10,8 +10,9 @@ Supervisor:       Tsjerk Wassenaar,  t.a.wassenaar@pl.hanze.nl <br>
 Daily supervisor: Vilacha Madeira R Santos, j.f.vilacha@rug.nl <br>
 
 ## Research questions
-1. Is it possible to predict long term simulations from sort term ones? 
-2. How short is short enough? 
+1. Assess whether a Convolutional Neural Networks (CNN) classification approach is useful and relevant in the field of MD.
+2. Is it possible to predict long term simulations from sort term ones? 
+3. How short is short enough? 
 
 ## Requirements
 
@@ -52,20 +53,22 @@ The pipeline consists of three modules: Preprocessing.py, Machinelearning.py and
 Each subfolder should contain a .pdb and .xtc file for the corresponding state.
 
 ```
- < data >
-     |  
-     |
-     |--active
-     |     |
-     |     |--topology file (.pdb)
-     |     |
-     |     |--coordinates file (.xtc)
-     |
-     |--inactive
-           |
-           |--topology file (.pdb)
-           |
-           |--coordinates file (.xtc)
+< EGFR >
+    |
+    |--data 
+    |    |  
+    |    |
+    |    |--active
+    |    |     |
+         |     |--topology file (.pdb)
+         |     |
+         |     |--coordinates file (.xtc)
+         |
+         |--inactive
+               |
+               |--topology file (.pdb)
+               |
+               |--coordinates file (.xtc)
 ```
 
 2. a 'savingpath' that all the results with be saved. -> str
@@ -79,7 +82,39 @@ savepath: /path/to/save
 
 ```
 The final output includes a series of down-sampled images, a prefomance img, a confusion matrix, a saliency map, a .txt file listing important residues, and a .pdb file with b-factor information showing the important residues. 
-
+```
+< output >
+    |
+    |-- imgs 
+    |     |
+    |     |-- active
+    |     |     |
+    |     |     |-- active_X.jpg    # The down-sampled active trajectory transcribed in RGB values
+    |     |
+    |     |-- inactive
+    |     |     |
+    |           |-- inactive_X.jpg  # The down-sampled inactive trajectory transcribed in RGB values
+    |     
+    |-- models
+    |     |
+    |     |-- model.h5               # The trained model 
+    |
+    |-- performance
+    |     |
+    |     |-- peformancne.jpg        # An image of the model's performance (locc, accuracy)
+    |     |-- confusion_matrix.jpg   # An image of the confusion matrix of the model 
+    |
+    |-- results
+    |     |
+    |     |-- inactive.txt           # The important residues for the inactive state
+    |     |-- inactive.pdb           #  b-factor information showing the important residues for the inactive state
+    |     |-- sal_map_inactive.jpg   # The saliency map of the inactive state
+          |-- active.txt             # The important residues for the active state
+          |-- active.pdb             #  b-factor information showing the important residues for the active state
+          |-- sal_map_active.jpg     # The saliency map of the active state
+          |   
+    
+```
 In order to run the pipeline simply run this code:
 ```
 python3 main.py -c path/to/confg.yml
