@@ -68,7 +68,7 @@ def find_res_index(state, ca):
     state: mdtoolkit.universe.Universe
         The state that needs to be processed
     ca: List[int]
-        Indices of Calcium atoms
+        Indices of Calpha atoms
 
     Returns
     -------
