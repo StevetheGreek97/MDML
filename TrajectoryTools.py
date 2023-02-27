@@ -69,11 +69,16 @@ class LoadTrajectories:
             A dictionary that maps subfolder names to trajectories created from the '.pdb' and '.xtc'
             files in those subfolders.
         """
+        traj_dict = {}
         # Create the traj_dict dictionary using a dictionary comprehension
-        traj_dict = {
-            folder: mda.Universe(file_paths[1], file_paths[0])
-            for folder, file_paths in self.get_files(path).items()
-        }
+        for folder, files_paths in self.get_files(path).items():
+            for file_path in files_paths:
+                if file_path.endswith('.xtc'):
+                       xtc = file_path
+                elif file_path.endswith('.pdb'):
+                       pdb = file_path
+            traj_dict[folder] = mda.Universe(pdb, xtc)
+
 
         # Print a message indicating the number of trajectories found
         print(f'Found {len(traj_dict.keys())} trajectories:')
