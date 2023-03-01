@@ -1,8 +1,11 @@
-from datetime import datetime
-from Yamlhandler import YamlHandler as yamlh
-from setup import *
 import numpy as np
-import tensorflow as tf
+
+from datetime import datetime
+
+from Yamlhandler import YamlHandler as yamlh
+from Deeplearn import setup, plot, fit
+
+
 
 def ML():
     yaml_handler = yamlh('config.yml')
@@ -13,19 +16,19 @@ def ML():
 
         # Load data
     print('Loading data...')
-    train_generator, test_generator = load_data(
+    train_generator, test_generator = setup.load_data(
         directory = f"{yaml_handler.read_key('savepath')}/output/imgs", 
         height = yaml_handler.read_key('height'), 
         lenght = yaml_handler.read_key('lenght')
         )
 
     # Build and compile model
-    model = build_and_compile_cnn_model(input_shape = train_generator.image_shape,
+    model =setup.build_and_compile_cnn_model(input_shape = train_generator.image_shape,
                                         n_classes = train_generator.num_classes
     )
     # Fit model
     print('Model fitting...')
-    history = fit_model(model, train_generator, test_generator)
+    history = fit.fit_model(model, train_generator, test_generator)
 
     # Save model
     print('Saving model...')
@@ -34,7 +37,7 @@ def ML():
 
     # Save  perforance plot
     print('Saving performance...')
-    get_performance(
+    plot.get_performance(
         history= history,
         path_to_save=f'{output_folder}/performance/performance_{date_now}.svg')
 
@@ -46,7 +49,7 @@ def ML():
 
     # Save Confution Matrix
     print(f'Saving confution matrix...')
-    plot_confusion_matrix( 
+    plot.plot_confusion_matrix( 
         generator=test_generator,
         y_pred = y_pred,
         path_to_save= f'{output_folder}/performance/CM_{date_now}.svg'

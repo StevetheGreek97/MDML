@@ -1,7 +1,6 @@
-# Importing libraries
 import numpy as np
 
-class Statistics: 
+class RMSD: 
     """ 
     ----------
     coords : numpy array
@@ -124,24 +123,6 @@ class Statistics:
             similarity = self._similarity(A = self.compute_avg_structure(),
                                         B = self.coords)
         return (self.compute_rgyr2_mean() + rgyr2 - 2 * similarity) ** 0.5
-
-    def rmsf(self):
-        """
-        Returns the RMSF of the initial coordinates.        
-
     
-
-        Returns
-        -------
-        rmsf : list
-            The root mean square flactuation of the initial coordinates 
-
-        """
-
-
-
-        self.coords -= self.coords.mean(axis = 0)
-        return ((self.coords**2).mean(axis = 0 )** 0.5).mean(axis = 1)
-        
-
-        
+if __name__ == '__main__':
+    pass

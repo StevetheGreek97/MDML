@@ -1,10 +1,5 @@
 """
-This code is a Python class that generates saliency maps for
-image classification models. The class Saliencymap initializes
-an instance of the class with an image classification model and
-an input image. It uses Tensorflow to compute the gradients of
-the prediction with respect to the input image and returns a
-gradient saliency map. The class Cam initializes an instance of
+The class Cam initializes an instance of
 the class with a given model. It computes guided gradients and weights,
 then overlays the computed CAM heatmap on the input image to generate
 the final heatmap.
@@ -15,60 +10,9 @@ import tensorflow as tf
 import numpy as np
 import cv2
 
-class Saliencymap():
-    """
-    A class for generating saliency maps for image classification models.
-    """
+from Utils import normalize
 
-    def __init__(self, model, img):
-        """
-        Initialize an instance of the Saliencymap class.
-
-        Parameters:
-        - model: The image classification model.
-        - img: The input image.
-        """
-        self.model = model
-        # Add an extra dimension to the input image
-        self.img = np.expand_dims(img, axis=0)
-
-    def _compute_grads(self):
-        """
-        Compute the gradients of the prediction with respect to the input image.
-        """
-        img = tf.Variable(self.img, dtype=float)
-
-        with tf.GradientTape() as tape:
-            # Get the predictions from the model
-            preds = self.model(img)[0] # Nested list
-            # Get the index of the class with the highest prediction
-            classIdx = np.argsort(preds)[::-1]
-            # Use the highest prediction as the loss
-            loss = preds[classIdx[0]]
-        # Compute the gradients of the loss with respect to the input image
-        grads = tape.gradient(loss, img)
-
-        return grads
-
-    def gradient_saliency_map(self):
-        """
-        Generate the gradient saliency map.
-
-        Returns:
-        - The gradient saliency map.
-        """
-        # Compute the gradients of the prediction with respect to the input image
-        grads = self._compute_grads()
-        # Get the absolute values of the gradients
-        grads_abs = np.abs(grads)
-        # Find the maximum value along the last axis of the absolute gradients
-        grad_max = np.max(grads_abs, axis=3)[0]
-        # Normalize the gradient values
-        grads_norm = normalize(grad_max)
-
-        return grads_norm
-
-class Cam:
+class GradCam:
     """
     A class for generating class activation maps
     for image classification models.
@@ -156,7 +100,7 @@ class Cam:
 
 
 
-    def grad_cam(self, img, n, layer_name=None):
+    def compute_map(self, img, n, layer_name=None):
         """
         Computes the Grad-CAM visualization for the input image and target class index.
 
@@ -202,21 +146,6 @@ class Cam:
         # Return the heatmap as a numpy array with values in the range [0, 255]
         return (heatmap_norm * 255).astype("uint8")
 
-def normalize(arr):
-    """
-    Normalize an array between 0 and 1.
-
-    Parameters:
-    - arr: The input array.
-
-    Returns:
-    - The normalized array.
-    """
-    # Calculate the minimum and maximum values of the array
-    min_values = np.min(arr)
-    max_values = np.max(arr)
-    # Normalize the array
-    return (arr - min_values) / (max_values - min_values)
 
 if __name__ == "__main__":
     pass

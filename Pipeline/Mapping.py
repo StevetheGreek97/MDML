@@ -4,7 +4,7 @@ import tensorflow.keras as keras
 import numpy as np
 import Vision as vis
 from setup import decode
-from Mapper import plot_saliencny_map, get_image_paths, write_to_file, find_res_index
+from Retrace import plot_saliencny_map, get_image_paths, find_res_index
 
 
 def mapping():

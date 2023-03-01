@@ -1,9 +1,8 @@
 from Createfolders import CreateFolders as cf
 from Yamlhandler import YamlHandler as yamlh
-from TrajectoryTools import LoadTrajectories, ParseTrajectory, down_sample
-from ImageTrasformation import xyz2rgb
+from TrajectoryTools import LoadTrajectories, ParseTrajectory, down_sample, xyz2rgb
 import tensorflow as tf
-import numpy as np
+
 
 
 def preprocess(conf_file):
