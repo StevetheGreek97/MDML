@@ -8,7 +8,7 @@ with open('README.md', "r") as fh:
     
 setup(
     name = 'MDML',
-    version= "0.0.2",
+    version= "0.0.3",
     author= "Stylianos Mavrianos", 
     author_email= "stylianosmavrianos@gmail.com", 
     description= 'Application of Deep learning on molecular dymanamics trajectories',
@@ -17,14 +17,14 @@ setup(
     long_description=long_description,
     long_description_content_type = "text/markdown",
     install_requires = read('requirements.txt'),
+    package_dir = {'' : 'src'},
     classifiers=[
         "Programming Language :: Python", 
         "Development Status :: 1 - Planning",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Intended Audience :: Education"
-        
+        "Intended Audience :: Education"   
     ] 
      
 )

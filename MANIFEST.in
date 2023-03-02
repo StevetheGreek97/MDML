@@ -1,4 +1,0 @@
-include *.py
-include *.txt
-include *.yml
-recursive-include Examples *.ipynb
