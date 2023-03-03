@@ -2,8 +2,8 @@ import numpy as np
 
 from datetime import datetime
 
-from Yamlhandler import YamlHandler as yamlh
-from Deeplearn import setup, plot, fit
+from .yaml_handler import YamlHandler as yamlh
+from ..Deeplearn import setup, plot, fit
 
 
 

@@ -1,6 +1,6 @@
-from Createfolders import CreateFolders as cf
-from Yamlhandler import YamlHandler as yamlh
-from TrajectoryTools import LoadTrajectories, ParseTrajectory, down_sample, xyz2rgb
+from .create_folders import CreateFolders as cf
+from .yaml_handler import YamlHandler as yamlh
+from ..TrajectoryTools import LoadTrajectories, ParseTrajectory, down_sample, xyz2rgb
 import tensorflow as tf
 
 

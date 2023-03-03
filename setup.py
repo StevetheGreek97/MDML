@@ -8,7 +8,7 @@ with open('README.md', "r") as fh:
     
 setup(
     name = 'MDML',
-    version= "0.0.3",
+    version= "0.0.7",
     author= "Stylianos Mavrianos", 
     author_email= "stylianosmavrianos@gmail.com", 
     description= 'Application of Deep learning on molecular dymanamics trajectories',

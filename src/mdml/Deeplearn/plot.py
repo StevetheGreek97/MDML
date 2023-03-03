@@ -2,7 +2,8 @@
 import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
-from Utils import get_labels
+
+from ..Utils import get_labels
 
 def plot_confusion_matrix(generator, y_pred,path_to_save, save = True):
     fig = px.imshow(confusion_matrix(generator.classes, y_pred),

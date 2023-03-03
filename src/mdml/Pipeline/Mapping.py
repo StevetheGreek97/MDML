@@ -1,10 +1,10 @@
-from Yamlhandler import YamlHandler as yamlh
-from TrajectoryTools import LoadTrajectories
+from .yaml_handler import YamlHandler as yamlh
+from ..TrajectoryTools import LoadTrajectories
 import tensorflow.keras as keras
 import numpy as np
-import Vision as vis
-from setup import decode
-from Retrace import plot_saliencny_map, get_image_paths, find_res_index
+from ..Vision import SaliencyMap
+from ..Utils import decode, write_to_file
+from ..Retrace import plot_saliencny_map, get_image_paths, find_res_index
 
 
 def mapping():
@@ -42,7 +42,7 @@ def mapping():
 
         print(f'Computing saliency map for {name}...')
         for img in get_image_paths(img_path):
-            sal_map += vis.SaliencyMap(model,decode(img)).gradient_saliency_map()
+            sal_map += SaliencyMap(model,decode(img)).gradient_saliency_map()
 
         # Normalize saliency map
         sal_map = sal_map / confkeys.read_key('downsample_to')

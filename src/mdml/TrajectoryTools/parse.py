@@ -1,7 +1,7 @@
 from MDAnalysis.analysis.base import AnalysisFromFunction
 import numpy as np
 
-from mdml.Allign import Allign
+from ..Allign import Allign
 
 class ParseTrajectory:
     """

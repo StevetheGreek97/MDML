@@ -1,7 +1,6 @@
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, InputLayer
-from Utils import get_labels
 
 def load_data(directory, lenght, height):
     data = keras.preprocessing.image.ImageDataGenerator(
