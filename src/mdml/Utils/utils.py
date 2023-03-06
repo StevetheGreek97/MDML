@@ -1,5 +1,5 @@
 import numpy as np
-import keras
+import tensorflow as tf
 
 def normalize(arr):
     """
@@ -39,11 +39,11 @@ def write_to_file(filename, text):
         file.write(text)
 
 def decode(img_path):
-    img = np.array(keras.preprocessing.image.load_img(
+    img = np.array(tf.keras.preprocessing.image.load_img(
         path = img_path,
         grayscale=False, 
         color_mode="rgb"))
-    return np.expand_dims(img/ 255, axis=0)
+    return img/ 255
 
 def get_labels(generator):
     target_names = []
