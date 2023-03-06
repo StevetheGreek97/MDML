@@ -7,8 +7,8 @@ from ..Deeplearn import setup, plot, fit
 
 
 
-def ML():
-    yaml_handler = yamlh('config.yml')
+def ML(conf_file):
+    yaml_handler = yamlh(conf_file)
      # Get current date -> %Y_%M-%D_%H.%M.%S
     date_now = str(datetime.now()).replace(' ',  '_')[:-7]
     yaml_handler.update_yaml('date', date_now)

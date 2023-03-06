@@ -7,12 +7,12 @@ from ..Utils import decode, write_to_file
 from ..Retrace import plot_saliencny_map, get_image_paths, find_res_index
 
 
-def mapping():
+def mapping(config):
     """
     This function is used to compute the saliency map for a given set of images.
     It also saves the saliency map in a `.jpg` file and the important residues in a `.txt` file.
     """
-    confkeys = yamlh('config.yml') 
+    confkeys = yamlh(config) 
     date = confkeys.read_key('date')
     save_path = confkeys.read_key('savepath')
     path = confkeys.read_key('masterpath')
